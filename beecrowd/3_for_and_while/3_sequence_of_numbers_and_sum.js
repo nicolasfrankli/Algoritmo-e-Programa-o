@@ -1,46 +1,49 @@
-import prompt from 'prompt-sync';
-const input = prompt({sigint: true});
+import prompt from 'prompt-sync'
+const input = prompt()
+
 
 function main(){
-    let i = 0
-    let output = result()
-    while(i < output.length){
-        let line = ''
-        let sum = 0
-        for(let elements of output[i]){
-            line += `${elements} `
-            sum +=elements
-        }
-        console.log(`${line}Sum=${sum}`)
-        i++
-    }
 
+    let [n1, n2] = input().split(' ').map(Number)
+    let maior
+    let menor
+    let numeros
+
+    while(n1 > 0 && n2 > 0){
+
+        if (n1 > n2){
+            maior = n1
+            menor = n2
+        }else{
+            maior = n2
+            menor = n1
+        }
+        
+        let function_output = []
+
+        while (menor <= maior){
+            function_output.push(menor)
+            menor++
+        }
+
+        show_numbers_and_sum_of_list(function_output)
+
+        numeros = input().split(' ').map(Number)
+        n1 = numeros[0]
+        n2 = numeros[1]
+    }
 }
 
-function result(){
-    let function_output =[]
-    let n1 = 1
-    let n2 = 1
-    while(true){
-        let [n1, n2] = input('').split(' ').map(Number)
-        let primary_list = []
-        if(n1 < 1 || n2 < 1){
-            break
-        }else if(n1 > n2){
-            while (n1 >= n2){
-                primary_list.push(n2)
-                n2++
-            }
-            function_output.push(primary_list)
-        } else {
-            while (n2 >= n1){
-                primary_list.push(n1)
-                n1++
-            }
-            function_output.push(primary_list)
-        }
+
+function show_numbers_and_sum_of_list(list){
+    let line = ''
+    let sum = 0
+    for(let element of list){
+        sum += element
+        line += `${element} `
     }
-    return function_output
+    console.log(`${line}Sum=${sum}`)
 }
+
 
 main()
