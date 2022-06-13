@@ -24,9 +24,9 @@ function conversion(number, denominator){
             num = (num - (num % denominator)) / denominator
 
         }
-        if (num >= 10 && num <= 15 && denominator === 16){
+        if ((num % denominator) >= 10 && (num % denominator) <= 15 && denominator === 16){
 
-            rest += `${list_hex[num - 10]}`
+            rest += `${list_hex[num % denominator - 10]}`
 
         } else {
 
