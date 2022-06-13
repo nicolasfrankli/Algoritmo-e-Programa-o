@@ -33,7 +33,6 @@ function conversion(number, denominator){
             rest += `${num % denominator}`
 
         }
-        console.log(num, rest, i)
 
     }
     let new_base_number = ''
